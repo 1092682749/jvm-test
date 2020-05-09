@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../dist/vue.js"></script>
+
+</head>
+<body>
+<div id="app">
+    <mynav>
+        <template v-slot:content>
+            <sub2 v-if="showPage('1')"></sub2>
+            <sub1 v-if="showPage('2')"></sub1>
+        </template>
+<!--        <sub2 :slot="getSlotName('1')"></sub2>-->
+<!--        <sub1 :slot="getSlotName('2')"></sub1>-->
+    </mynav>
+</div>
+</body>
+</html>
+<script type="module">
+    import {mynav} from './nav.js'
+    import {sub1} from './sub1.js'
+    import {sub2} from './sub2.js'
+
+    window.app = new Vue({
+        el: '#app',
+        components: {
+            mynav,
+            sub1,
+            sub2
+        },
+        data: {
+            sub1Slot: 'content',
+            sub2Slot: 'ccc',
+            current: '1'
+        },
+        methods: {
+            showPage: function (num) {
+                return num == this.current;
+            },
+            getSlotName: function (num) {
+                if (num == this.current) return "content";
+                else return "";
+            }
+        }
+    })
+</script>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body >
+    <div id="box"></div>
+</body>
+</html>
+<script>
+    var setName;
+</script>
+<script type="module">
+    // import {f} from './mymodule.js'
+    import { firstName, lastName } from './mymodule.js';
+    var box = document.getElementById('box');
+    // setName(document.getElementById('box'));
+    setName = function (element) {
+        element.textContent = firstName + ' ' + lastName;
+    }
+
+
+
+</script>
